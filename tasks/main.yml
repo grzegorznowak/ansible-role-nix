@@ -1,6 +1,5 @@
 ---
 - name: Ensure nix directory exists
-  become: true
   file:
     path: "/nix"
     owner: "{{ nix_user }}"
@@ -17,7 +16,5 @@
         mode: "0755"
 
     - name: Run installer script
-      become: true
-      become_user: "{{ nix_user }}"
       command: "{{ nix_script_dir }}/install_nix.sh"
   when: nix_directory is changed
